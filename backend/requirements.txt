@@ -1,0 +1,31 @@
+# PathOptix backend dependencies
+# Stage 1: project scaffold base dependencies
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.27,<1.0
+pydantic>=2.6,<3.0
+pydantic-settings>=2.1,<3.0
+sqlalchemy>=2.0,<3.0
+python-multipart>=0.0.9,<1.0
+python-dotenv>=1.0,<2.0
+# Stage 4: JWT auth and password hashing
+# Note: use bcrypt directly instead of passlib, because passlib 1.7.4 is incompatible with bcrypt>=4.1
+bcrypt>=4.0,<6.0
+python-jose[cryptography]>=3.3,<4.0
+# Stage 2: reinforcement learning algorithm layer dependencies
+# If torch install fails, rl/ppo_agent.py will fall back to numpy implementation
+torch>=2.0.0
+numpy>=1.24.0
+# Stage 3: database migration management
+alembic>=1.13,<2.0
+# Stage 5: AI explainability (LangGraph workflow LLM calls)
+# Optional: when missing, optimization_service falls back to hardcoded _build_explanation
+langchain-openai>=0.2,<1.0
+langchain-core>=0.3,<1.0
+openai>=1.12,<2.0
+# LangGraph workflow orchestration: required by xrl_workflow._build_graph
+# When missing, run_logistics_pipeline is unavailable (generate_explanation still works without it)
+langgraph>=0.2,<1.0
+# PPO training/inference: top-level import in app/services/ai/train_agent.py (no numpy fallback)
+# When missing, train_agent.predict_route and rl_node of run_logistics_pipeline are unavailable
+# Note: rl/ppo_agent.py has numpy fallback, optimization_service main flow does not depend on this package
+stable-baselines3>=2.0,<3.0

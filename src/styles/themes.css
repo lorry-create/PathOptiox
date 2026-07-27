@@ -1,0 +1,150 @@
+/* ============================================================
+   PathOptix Dashboard — Design Tokens & Theme Variables
+   ============================================================ */
+
+:root {
+  --font-family: 'Inter', sans-serif;
+}
+
+[data-theme="dark"],
+:root {
+  --color-bg-primary: #05080F;
+  --color-bg-secondary: #0B121E;
+  --color-bg-tertiary: #111827;
+  --color-bg-elevated: #1c2127;
+  --color-bg-modal: #0B0F19;
+  --color-bg-overlay: rgba(0, 0, 0, 0.6);
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #9dabb9;
+  --color-text-muted: #64748b;
+
+  --color-border-default: rgba(59, 71, 84, 0.5);
+  --color-border-input: #3b4754;
+  --color-border-focus: #137fec;
+
+  --color-brand-primary: #137fec;
+  --color-brand-success: #10b981;
+  --color-brand-warning: #f59e0b;
+  --color-brand-error: #ef4444;
+  --color-brand-accent: #06b6d4;
+
+  --glow-cyan: 0 0 15px rgba(6, 182, 212, 0.4);
+  --glass-bg: rgba(28, 33, 39, 0.7);
+  --glass-border: rgba(59, 71, 84, 0.5);
+  --network-gradient: radial-gradient(circle at center, #137fec1a 0%, transparent 70%);
+  --scrollbar-track: #0B0F19;
+  --scrollbar-thumb: #1F2937;
+}
+
+[data-theme="light"] {
+  --color-bg-primary: #F8FAFC;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #F1F5F9;
+  --color-bg-elevated: #ffffff;
+  --color-bg-modal: #ffffff;
+  --color-bg-overlay: rgba(0, 0, 0, 0.5);
+
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94A3B8;
+
+  --color-border-default: #E2E8F0;
+  --color-border-input: #CBD5E1;
+  --color-border-focus: #2563EB;
+
+  --color-brand-primary: #2563EB;
+  --color-brand-success: #059669;
+  --color-brand-warning: #D97706;
+  --color-brand-error: #DC2626;
+  --color-brand-accent: #0891B2;
+
+  --glow-cyan: 0 0 12px rgba(6, 182, 212, 0.25);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(226, 232, 240, 0.8);
+  --network-gradient: radial-gradient(circle at center, #3730a308 0%, transparent 70%);
+  --scrollbar-track: #F1F5F9;
+  --scrollbar-thumb: #CBD5E1;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  transition: background-color 0.3s ease-in-out,
+              color 0.3s ease-in-out,
+              border-color 0.3s ease-in-out,
+              box-shadow 0.3s ease-in-out;
+}
+
+button, a, input, select, textarea {
+  transition: none;
+}
+
+body {
+  font-family: var(--font-family), sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+}
+
+.glow-cyan {
+  box-shadow: var(--glow-cyan);
+}
+.path-glow {
+  filter: drop-shadow(0 0 4px rgba(6, 182, 212, 0.8));
+}
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+.glow-button:hover {
+  box-shadow: 0 0 20px rgba(19, 127, 236, 0.4);
+}
+.network-gradient {
+  background: var(--network-gradient);
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .print-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 20px !important;
+    background: white !important;
+    color: black !important;
+  }
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: black !important;
+  }
+  div {
+    border-color: black !important;
+    background: white !important;
+    color: black !important;
+  }
+}

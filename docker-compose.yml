@@ -1,0 +1,59 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.backend
+    container_name: pathoptix-backend
+    ports:
+      - "8010:8010"
+    env_file:
+      - .env.backend
+    environment:
+      - DEBUG=False
+      - BACKEND_CORS_ORIGINS=["http://localhost:9010","http://127.0.0.1:9010"]
+    restart: unless-stopped
+    volumes:
+      - pathoptix-db-data:/app/data
+      - pathoptix-logs:/app/logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; r=urllib.request.urlopen('http://localhost:8010/api/health'); assert r.status==200"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 45s
+    networks:
+      - pathoptix-net
+
+  frontend:
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile.frontend
+    container_name: pathoptix-frontend
+    ports:
+      - "9010:9010"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - pathoptix-net
+
+networks:
+  pathoptix-net:
+    driver: bridge
+
+volumes:
+  pathoptix-db-data:
+    driver: local
+  pathoptix-logs:
+    driver: local

@@ -1,0 +1,141 @@
+# ===========================================
+# Logs
+# ===========================================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ===========================================
+# Dependencies
+# ===========================================
+node_modules/
+.pnp
+.pnp.js
+
+# ===========================================
+# Build output
+# ===========================================
+dist/
+dist-ssr/
+*.local
+*.tsbuildinfo
+docs
+docs/*
+
+
+# ===========================================
+# Test & Coverage
+# ===========================================
+coverage/
+lcov-report/
+lcov.info
+clover.xml
+coverage-final.json
+.nyc_output/
+test-results/
+playwright-report/
+
+# ===========================================
+# Editor directories and files
+# ===========================================
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.sublime-project
+*.sublime-workspace
+
+# ===========================================
+# OS generated files
+# ===========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$null
+~$*
+
+# ===========================================
+# Cache and temp files
+# ===========================================
+__pycache__/
+*.pyc
+*.pyo
+.Python
+.npm_cache/
+*.db
+*.sqlite3
+.cache/
+.parcel-cache/
+.eslintcache
+.prettierrc.cache
+.turbo/
+
+# ===========================================
+# Python (Backend)
+# ===========================================
+venv/
+.venv/
+env/
+.env/
+*.egg-info/
+.eggs/
+*.egg
+.pytest_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+*.cover
+.hypothesis/
+.pyre/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ===========================================
+# Build artifacts and deploy packages
+# ===========================================
+production_*/
+*-deploy-*/
+*.zip
+!package-lock.json
+
+# Large archive / data files
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.rar
+*.7z
+
+
+# ===========================================
+# Sensitive environment info
+# ===========================================
+.env
+.env.local
+.env.*.local
+.env.*
+# ===========================================
+# Docker
+# ===========================================
+docker-compose.override.yml
+
+# ===========================================
+# AI / LLM tool artifacts
+# ===========================================
+.claude/
+.aider*
+.cursor/
+.copilot-instructions.md
